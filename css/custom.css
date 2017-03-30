@@ -1,0 +1,26 @@
+
+footer.azri-logo {
+  position: absolute;
+  bottom: 2em;
+  left: 3em;
+  width: 100%;
+}
+footer.azri-logo img {
+  width : 100px;;
+}
+footer.dcb-logo {
+  position: absolute;
+  bottom: 2em;
+  right: 3em;
+}
+footer.dcb-logo img {
+  height:70px;
+  width: 70px;
+}
+.reveal .controls {
+  display:block;
+}
+
+.reveal .home h1 {
+  font-size: 2.5em;
+}
