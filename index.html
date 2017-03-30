@@ -78,11 +78,12 @@
 						<section>
 							<h2>Sandeep Reddy</h2>
 							<ul>
-								<li>Graduated from R.L.Jallapa Institue Of Technology</li>
+								<li>Graduated from G.R.I.E.T.</li>
 								<li>From Hyderabad</li>
 								<li>Technical architect at Azri Solutions</li>
-								<li>Cake php, Magento, Symfony Developer</li>
+								<li>Cake php, Codeigniter, Symfony Developer</li>
 								<li>Drupal since 2016</li>
+<li>Maintainer of Views Tools</li>
 								<li>Cricket, Badmitton Addict</li>
 							</ul>
 							<aside class="notes">
@@ -196,17 +197,18 @@
 							</section>
 							<section>
 								<h2>Example</h2>
-								<pre>
-								<code class="php">
-								/**
-								 * Return type declarations
-								 */
-								//declare(strict_types=1);
-								function add(int $a, int $b){
-								    return (string)($a + $b);
-								}
-								</code>
-								</pre>
+<pre><code class="php">&lt?php
+
+/**
+* Return type declarations
+*/
+//declare(strict_types=1);
+function add(int $a, int $b){
+	return (string)($a + $b);
+}
+
+?>
+</code></pre>
 							</section>
 						</section>
 
@@ -221,18 +223,18 @@
 
 							<section>
 								<h2>Example</h2>
-								<pre>
-								<code class="php">
-								/**
-								 * Return type declarations
-								 */
-								//declare(strict_types=1);
-								function add(int $a, int $b): int{
-								    return (string)($a + $b);
-								}
+								<pre><code class="php">
+&lt?php
+/**
+* Return type declarations
+*/
+//declare(strict_types=1);
+function add(int $a, int $b): int{
+return (string)($a + $b);
+}
 
-								</code>
-								</pre>	
+?>
+								</code></pre>	
 							</section>
 						</section>
 
@@ -242,31 +244,73 @@
 							</section>
 							<section>
 								<h2>Null Coalesching Operators</h2>
+<pre class="fragment">
+<code class="php">
+&lt?php
+// Fetches the value of $_GET['user'] and returns 'nobody'
+// if it does not exist.
+$username = $_GET['user'] ?? 'nobody';
+// This is equivalent to:
+$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
+
+// Coalescing can be chained: this will return the first
+// defined value out of $_GET['user'], $_POST['user'], and
+// 'nobody'.
+$username = $_GET['user'] ?? $_POST['user'] ?? 'nobody';
+?>
+
+</code></pre>
 							</section>	
 							<section>
 								<h2>Spaceship operator</h2>
-							</section>						
+<ul>
+<li class="fragment">
+Used for comparing two expressions.</li></ul>
+<pre class="fragment">
+<code class="php">&lt?php
+
+echo 1 <=> 1; // 0
+echo 1 <=> 2; // -1
+echo 2 <=> 1; // 1
+
+// Floats
+echo 1.5 <=> 1.5; // 0
+echo 1.5 <=> 2.5; // -1
+echo 2.5 <=> 1.5; // 1
+
+?>
+</code></pre>
+					</section>						
 						</section>
 
 
 						<section>
 							<section>
 								<h2>Other new features(syntaxes) in PHP7.</h2>
-								<ul>
-								  <li class="fragment">Process Once Use Multiple Times.</li>
-								</ul>
 							</section>
 
 							<section>
 								<h2>Group use declarations</h2>
 								<ul>
-								  <li class="fragment">Cache Hit.</li>
+								  <li class="fragment">Process Classes, functions and constants being imported from the same namespace can now be grouped together in a single use statement.</li>
+<pre class="fragment"><code>
+&lt?php
+use some\namespace\ClassA;
+use some\namespace\ClassB;
+use some\namespace\ClassC as C;
+// will now can be
+use some\namespace\{ClassA, ClassB, ClassC as C};
+
+</code></pre>
 								</ul>
 							</section>
 
 							<section>
 								<h2>Anonymous classes</h2>
+<ul>
+								  <li class="fragment">Support for anonymous classes has been added via new class.</li></ul>
 							</section>
+
 
 						</section>
 
@@ -275,7 +319,9 @@
 							<section>
 									<h3>Error Handling</h3>
 										<ul>
-											<li>Cache invalidation, </li>
+<li class="fragment">Fatal errors in the past has been next to impossible</li>											
+<li class="fragment">Exception will be thrown when a fatal and recoverable error occurs </li>
+<li class="fragment">Warnings and notices remain unchanged</li>
 										</ul>
 							</section>
 							<section>
@@ -290,41 +336,48 @@
 
 
 						<section>
-							<h2>Cryptographically Secure PseudoRandom Number Generator in PHP.</h2>
+							<h2>Cryptographically Secure Pseudo Random Number Generator.</h2>
 							<ul>
-							  <li class="fragment">Cache contexts are analogous to HTTP's Vary header.</li>
-							</ul>
+							  <li class="fragment">None of the random number generators in version 5 are very secure.</li><li class="fragment">
+In PHP 7, they put together a system interface to the operating system’s random number generator.
+							</li></ul>
 						</section>
 						<section>
 							<h2>Backward incompatible changes in PHP 7</h2>
 							<ul>
-							  <li class="fragment">Cache contexts are analogous to HTTP's Vary header.</li>
+							  <li class="fragment">Changes to error and exception handling.</li>
+<li class="fragment">Internal constructors always throw exceptions on failure.</li>
+<li class="fragment">Parse errors throw ParseError.</li>
+<li class="fragment">Changes to variable handling.</li>
 							</ul>
 						</section>						
 						<section>
 							<h2>PHP 7 virtualbox with Drupal VM</h2>
 							<ul>
-							  <li class="fragment">Cache contexts are analogous to HTTP's Vary header.</li>
+							  <li class="fragment">Demo</li>
 							</ul>
 						</section>
 						<section>
 							<h2>Demo : Benchmarking a Drupal 8 site in php 5.6 and php 7</h2>
 							<ul>
-							  <li class="fragment">Cache contexts are analogous to HTTP's Vary header.</li>
+							  <li class="fragment">Demo.</li>
 							</ul>
 						</section>
 
 						<section>
 							<h2>Reference Links</h2>
 							<ul>
-							  <li class="fragment"><a target="_blank" href="http://wimleers.com/article/performance-calendar-2013-making-the-entire-web-fast">Wim Leers Blog</a> </li>
+<li class="fragment"><a target="_blank" href="http://php.net/manual/en/migration70.new-features.php">http://php.net/manual/en/migration70.new-features.php</a> </li>
+<li class="fragment"><a target="_blank" href="http://blog.teamtreehouse.com/5-new-features-php-7">http://blog.teamtreehouse.com/5-new-features-php-7</a> </li>
+<li class="fragment"><a target="_blank" href="https://phpocean.com/blog/article/8-cool-features-to-come-in-php-7-1/43">https://phpocean.com/blog/article/8-cool-features-to-come-in-php-7-1/43</a> </li>
+<li class="fragment"><a target="_blank" href="https://www.phpclasses.org/blog/post/493-php-performance-evolution.html">https://www.phpclasses.org/blog/post/493-php-performance-evolution.html</a> </li>
 							</ul>
 						</section>
 
 
 						<section>
 							<h1>Thank You!</h1>
-							<h3>Gokul NK</h3>
+							<h3>Sandeep Reddy & Gokul NK</h3>
 						</section>
 
 						<section>
